@@ -8,8 +8,11 @@ def build_func(a=2):
 
     return the_func
 
-def main():
-
+def linear_regression():
+    '''
+    linear regression
+    :return: None
+    '''
     target = 10
 
     def lossFunc(a, x, y):
@@ -45,4 +48,4 @@ def main():
     print a
 
 if __name__ == '__main__':
-    main()
+    linear_regression()
