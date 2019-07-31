@@ -1,5 +1,5 @@
 import numpy as np
-from matplotlib import pyplot as plt
+from matplotlib_common import pyplot as plt
 import random
 
 def build_func(a=2):
