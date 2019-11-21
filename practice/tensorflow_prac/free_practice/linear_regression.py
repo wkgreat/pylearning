@@ -9,10 +9,10 @@ def build_func(a=2):
     return the_func
 
 def linear_regression():
-    '''
+    """
     linear regression
     :return: None
-    '''
+    """
     target = 10
 
     def lossFunc(a, x, y):
@@ -38,14 +38,14 @@ def linear_regression():
         loss = lossFunc(a, mx, my)
         mean_loss = np.sum(loss) * 1.0 / loss.shape[0]
         a += delta[0, 0]
-        print a
+        print(a)
 
         ax.plot(x, np.array([build_func(a)(xx) for xx in x]))
 
     plt.ioff()
     plt.show()
 
-    print a
+    print(a)
 
 if __name__ == '__main__':
     linear_regression()

@@ -1,5 +1,7 @@
 import tensorflow as tf
-import tf_classification_dataset as dataset
+import numpy as np
+from dlwithtf import tf_classification_dataset as dataset
+
 tf.compat.v1.disable_v2_behavior()  # 关闭eager模式
 
 '''
@@ -50,6 +52,23 @@ def main():
             _, summary, loss = sess.run([train_op, merged, l], feed_dict=feed_dict)
             print("Step %d, loss: %f" % (i, loss))
             train_writer.add_summary(summary, i)
+
+
+        #test
+        pw = sess.run(W)
+        pb = sess.run(b)
+        print("w: ", pw.flatten())
+        print("b: ", pb)
+        p_y_logit = np.matmul(x_np,pw) + pb
+        p_y_sig = np.vectorize(lambda x: 1.0/x)((1 + np.exp(p_y_logit)))
+        p_y_pred = np.round(p_y_sig).flatten()
+
+        print("y_np: \n", y_np)
+        print("p_y_pred: \n", p_y_pred)
+
+
+
+
 
 
 def test():

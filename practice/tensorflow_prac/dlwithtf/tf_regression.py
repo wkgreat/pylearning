@@ -1,5 +1,5 @@
 import tensorflow as tf
-import tf_regression_dataset as dataset
+from dlwithtf import tf_regression_dataset as dataset
 
 tf.compat.v1.disable_v2_behavior()  # 关闭eager模式
 
