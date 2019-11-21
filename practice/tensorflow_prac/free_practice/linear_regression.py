@@ -1,12 +1,14 @@
 import numpy as np
-from matplotlib_common import pyplot as plt
+import matplotlib.pyplot as plt
 import random
+
 
 def build_func(a=2):
     def the_func(x):
         return a * x
 
     return the_func
+
 
 def linear_regression():
     """
@@ -46,6 +48,7 @@ def linear_regression():
     plt.show()
 
     print(a)
+
 
 if __name__ == '__main__':
     linear_regression()

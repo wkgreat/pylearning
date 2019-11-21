@@ -22,15 +22,18 @@ train_example_batch, train_labels_batch = next(iter(train_data.batch(10)))
 print(train_example_batch)
 print(train_labels_batch)
 
-# 句子转换为嵌入向量
+# Text embedding based on Swivel co-occurrence matrix factorization[1] with pre-built OOV.
+# Maps from text to 20-dimensional embedding vectors.
 embedding = "https://hub.tensorflow.google.cn/google/tf2-preview/gnews-swivel-20dim/1"
+
+# 句子转换为嵌入向量的Layer
 hub_layer = hub.KerasLayer(
     embedding,
-    input_shape=[],
+    input_shape=[],  # Expects a tensor of shape [batch_size] as input.
     dtype=tf.string,
     trainable=True
 )
-hub_layer(train_example_batch)
+print(hub_layer(train_example_batch))  # 测试一下
 
 model = tf.keras.Sequential()
 model.add(hub_layer)  # 将句子转换为嵌入向量层

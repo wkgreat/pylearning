@@ -63,7 +63,7 @@ class Kmeans():
             self.center()
 
             m = self.total_center_dist()
-            print i, m
+            print(i, m)
             self.show()
             if m < 0.001:
                 break
@@ -97,7 +97,7 @@ class Kmeans():
         recalculate each center according to sample points
         :return:
         """
-        for clabel in self.centers.iterkeys():
+        for clabel,_ in self.centers.items():
             cps = np.array([p.point for p in self.points if clabel == p.label])
             cps_sum = cps.sum(0)
             new_center = cps_sum * 1.0 / cps.shape[0]
@@ -127,7 +127,6 @@ class Kmeans():
         self.points_plot = plt.scatter(points[:,0],points[:,1],c=np.array([int(p.label) for p in self.points]))
         plt.pause(1)
 
-
     def show(self):
         centers = np.array([p.point for p in self.centers.values()])
         points = np.array([p.point for p in self.points])
@@ -135,23 +134,26 @@ class Kmeans():
         self.points_plot = plt.scatter(points[:,0],points[:,1],c=np.array([int(p.label) for p in self.points]))
         plt.pause(1)
 
+
 def test():
     kmeans = Kmeans(10,1000)
-    samples = [[random.randint(1,100),random.randint(1,100)] for i in xrange(0,100)]
+    samples = [[random.randint(1,100), random.randint(1,100)] for i in range(0,100)]
     kmeans.set_sample(samples)
     kmeans.train()
-    print "Center:"
-    for p in kmeans.centers.itervalues():
-        print p
-    print "Result:"
+    print("Center:")
+    for _, p in kmeans.centers.items():
+        print(p)
+    print("Result:")
     for p in kmeans.result():
-        print p
+        print(p)
+
 
 def dist_test():
     kmeans = Kmeans(10, 1000)
     p1 = LabelPoint([1,1],1)
     p2 = LabelPoint([2,2],2)
-    print kmeans.dist(p1,p2)
+    print(kmeans.dist(p1,p2))
+
 
 if __name__ == '__main__':
     test()
