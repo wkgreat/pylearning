@@ -1,6 +1,10 @@
-import tensorflow as tf
+import tensorflow
 import numpy as np
 import matplotlib.pyplot as plt
+# tensorflow 版本兼容
+tf_main_version = int(tensorflow.__version__.split(".")[0])
+tf = tensorflow.compat.v1 if tf_main_version >= 2 else tensorflow
+if tf_main_version >=2: tf.disable_eager_execution()
 
 def GenerateData(batchsize = 100):
     train_X = np.linspace(-1, 1, batchsize)
