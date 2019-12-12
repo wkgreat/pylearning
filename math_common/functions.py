@@ -34,7 +34,7 @@ def cross_entropy(X1, X2):
 
 
 def softmax_cross_entropy(X, Y):
-    return cross_entropy(Y,softmax(X))
+    return cross_entropy(Y, softmax(X))
 
 
 if __name__ == '__main__':

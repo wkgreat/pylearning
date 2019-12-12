@@ -8,7 +8,7 @@ if tf_main_version >=2: tf.disable_eager_execution()
 def read_data(file_queue):
     reader = tf.TextLineReader(skip_header_lines=1)
     key, value = reader.read(file_queue)
-    defaults = [[0],[0.],[0.],[0.],[0.],[0]]  # 为每个字段设置初始值
+    defaults = [[0], [0.], [0.], [0.], [0.], [0]]  # 为每个字段设置初始值
     cvscolumn = tf.decode_csv(value, defaults)  # 为每一行进行解析
 
     featurecolumn = [i for i in cvscolumn[1:-1]]
