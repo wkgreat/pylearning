@@ -20,7 +20,7 @@ class PhoneCallWin():
         self.top.title("拨打电话")
         self.label = tk.Label(self.top, text="请输入电话号码")
         self.entry = tk.Entry(self.top, bd=4, textvariable="15600000000")
-        self.entry.bind("<Button-2>", self.rightClick)
+        self.entry.bind("<Button-2>", self.right_click)
         self.button = tk.Button(self.top, text="Press", command=functools.partial(self.call, self.entry))
         self.label.pack()
         self.entry.pack()
@@ -28,7 +28,7 @@ class PhoneCallWin():
         sp.Popen("adb nodaemon server", shell=True).wait()
         tk.mainloop()
 
-    def rightClick(self, event: tk.Event):
+    def right_click(self, event: tk.Event):
         entry: tk.Entry = event.widget
         try:
             content = self.top.clipboard_get()
