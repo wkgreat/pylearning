@@ -31,6 +31,8 @@ def create_pipeline(filename, batch_size, num_epochs=None):
 
 train_path = r'/Users/wkgreat/Documents/base/data/tensorflow_engineering/ch4/p_4_4_excel_data/iris_test.csv'
 test_path = r'/Users/wkgreat/Documents/base/data/tensorflow_engineering/ch4/p_4_4_excel_data/iris_training.csv'
+# train_path = r'../../free_practice/test.csv'
+# test_path = r'../../free_practice/test.csv'
 x_train_batch, y_train_batch = create_pipeline(train_path, 32, num_epochs=100)
 x_test, y_test = create_pipeline(test_path, 32)
 
